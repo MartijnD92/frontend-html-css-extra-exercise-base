@@ -1,6 +1,10 @@
 /*Base styles*/
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400&display=swap');
 
+:root {
+    --accent-clr: hsl(29, 100%, 47%);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -31,9 +35,41 @@ h1 {
     padding: 32px;
 }
 
+.compliment p::before,
+.compliment p::after {
+    content: '\0022';
+}
+
 .highlight {
     color: hsl(210, 93%, 19%);
     font-weight: 400;
+    position: relative;
+}
+
+.highlight:hover::before {
+    content: 'Dit is een Latijns woord.';
+    display: block;
+    position: absolute;
+    top: -25px;
+    left: 0;
+    transform: translateX(-25%);
+    width: 200px;
+    height: 1.5em;
+    background-color: var(--accent-clr);
+    color: #fff;
+}
+
+.highlight:hover::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -20px;
+    left: 35px;
+    width: 20px;
+    height: 20px;
+    transform: rotate(45deg);
+    background: var(--accent-clr);
+    z-index: -10;
 }
 
 footer {
@@ -43,4 +79,8 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.copyright::after {
+    content: '\00a0\00a9';
 }
